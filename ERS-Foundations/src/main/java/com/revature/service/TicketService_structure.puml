@@ -1,0 +1,145 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.revature.service.TicketService",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_268132974 { 
+   	label=revature
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1406714457 { 
+   	label=service
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   TicketService1156724518[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TicketService</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ delete(id: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTicketsByStatus(status: String, employeeId: int): List&lt;Ticket&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTicketsByStatusAndType(status: String, employeeId: int, type: String): List&lt;Ticket&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insert(ticket: Ticket): Ticket</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateStatus(id: int, status: String): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1462777478 { 
+   	label=data
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   TicketDaoImpl795262169[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TicketDaoImpl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   connection: Connection [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ delete(id: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTicketsByStatus(status: String, employeeId: int): List&lt;Ticket&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTicketsByStatusAndType(status: String, employeeId: int, type: String): List&lt;Ticket&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insert(ticket: Ticket): Ticket</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateStatus(id: int, status: String): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+TicketService1156724518 -> TicketDaoImpl795262169[arrowhead=none];
+    
+}
+@enduml
